@@ -2,7 +2,6 @@
 
 A [Docker](http://docker.com) image for [h265ize](https://github.com/FallingSnow/h265ize), to make it easy to convert videos to h.265.
 
-[![](https://images.microbadger.com/badges/image/adriel/h265ize.svg)](https://microbadger.com/images/adriel/h265ize)
 ## Getting Started
 
 ```sh
@@ -12,7 +11,7 @@ docker run \
   -u <UID> \
   -v </location/to/video/files/input>:/input \
   -v </location/to/video/files/output>:/output \
-  gitterdonescott/h265ize
+  gitterdone/h265ize
 ```
 
 Replace `<UID>` with your user's ID, you can get this by running `id -u`, e.g. `-u 1002 `.
@@ -40,7 +39,7 @@ docker run \
   -u <UID> \
   -v </location/to/video/files/input>:/input \
   -v </location/to/video/files/output>:/output \
-  gitterdonescott/h265ize -25
+  gitterdone/h265ize -25
 ```
 Note the `-q 25` added after `gitterdonescott/h265ize`.
 
