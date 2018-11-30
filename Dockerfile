@@ -1,5 +1,5 @@
 FROM node:7-alpine
-MAINTAINER Adriel Kloppenburg
+MAINTAINER gitterdonescott
 
 LABEL h265ize_version="bleading edge" architecture="amd64"
 
@@ -9,7 +9,11 @@ RUN apk add --no-cache --update-cache git ffmpeg && \
     mkdir /input && mkdir /output && \
     rm /var/cache/apk/*
 
+#override for single file. [TODO] Spaces in filename break
+ENV SOURCE_FILE "" 
+
 VOLUME ["/input", "/output"]
 WORKDIR /h265ize
 
-ENTRYPOINT ["/usr/local/bin/h265ize", "--watch", "/input", "-d", "/output"]
+#mount the same directory twice for source and destination to be the same
+ENTRYPOINT ["/bin/sh", "-c", "exec /usr/local/bin/h265ize /input/$SOURCE_FILE -d /output $0 $@"]
